@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock Project</title>
+    <style>
+
+        #cl-container {
+            width: 35vw;
+            height: 35vw;
+            margin: auto;
+            margin-top: 2%;
+        }
+
+        #cl {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            position: relative;
+            padding: auto;
+            background-color: darksalmon;
+            background-image: url('cl-background.png');
+            background-size: cover;
+        }
+
+        #dot {
+            width: 4%;
+            height: 4%;
+            border-radius: 50%;
+            background-color: rgb(95, 27, 27);
+            margin: auto;
+            margin-top: 48%;
+        }
+
+        #h, #m, #s {
+            position: absolute;
+            background-color: rgb(95, 27, 27);
+            border-radius: 15px;
+            transform-origin: bottom;
+        }
+
+        #h {
+            width: 3%;
+            height: 24%;
+            top: 26%;
+            left: 48.4%;
+            opacity: 0.7;
+        }
+
+        #m {
+            width: 2.5%;
+            height: 30%;
+            top: 20%;
+            left: 48.6%;
+            opacity: 0.7;
+        }
+
+        #s {
+            width: 2%;
+            height: 36%;
+            top: 14%;
+            left: 48.7%;
+            opacity: 0.7;
+        }
+
+        #dcl {
+            height: auto;
+            font-size: 60px;
+            text-align: center;
+            margin: 3% 35%;
+            background-color: rgb(128, 242, 21);
+            border-radius: 10px;
+            border: 2px  solid black;
+        }
+
+        @media screen and (max-width: 990px){
+            #dcl{
+                font-size: 40px;
+            }
+
+            #cl-container {
+            width: 40vw;
+            height: 40vw;
+            margin-top: 5%;
+        }
+        }
+
+        @media screen and (max-width: 700px){
+            #dcl{
+                font-size: 30px;
+            }
+        }
+
+        @media screen and (max-width: 500px){
+            #dcl{
+                font-size: 20px;
+                padding: 0px 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="cl-container">
+
+        <div id="cl">
+            <div id="dot"> </div>
+
+            <div id="h"> </div>
+            <div id="m"> </div>
+            <div id="s"> </div>
+        </div>
+    </div>
+
+
+
+    <div id="dcl">
+
+    </div>
+
+
+
+    <script>
+        setInterval(() => {
+            let dt = new Date();
+
+            let hour = dt.getHours();
+            let min = dt.getMinutes();
+            let sec = dt.getSeconds();
+
+            let hrt = 30 * hour + min / 2;
+            let mrt = 6 * min;
+            let srt = 6 * sec;
+
+            h.style.transform = `rotate(${hrt}deg)`
+            m.style.transform = `rotate(${mrt}deg)`
+            s.style.transform = `rotate(${srt}deg)`
+        }, 1000);
+
+        setInterval(() => {
+            document.getElementById('dcl').innerText = new Date().toLocaleTimeString();
+            // dcl.innerText = new Date().toLocaleTimeString();
+        }, 1000);
+    </script>
+</body>
+
+</html>
